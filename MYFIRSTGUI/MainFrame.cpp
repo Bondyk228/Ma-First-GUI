@@ -6,32 +6,43 @@ MainFrame::MainFrame(const wxString& title, const wxPoint& pos, const wxSize& si
 
 {
 	wxPanel* panel = new wxPanel(this, wxID_ANY);
-	wxButton* button = new wxButton(panel, wxID_ANY, "Click me for a surpirze", wxPoint(20, 20), wxDefaultSize);
-	wxSlider* slider = new wxSlider(panel, wxID_ANY, 0, 0, 100, wxPoint(20, 70), wxSize(150, -1), wxSL_VALUE_LABEL);
-	wxTextCtrl* textctrl = new wxTextCtrl(panel, wxID_ANY, "Enter text here", wxPoint(20, 120), wxSize(200, -1));
+	wxButton* button1 = new wxButton(panel, wxID_ANY, "Click me for a surpirze", wxPoint(20, 20), wxDefaultSize);
+	wxButton* button2 = new wxButton(panel, wxID_ANY, "No, click me!", wxPoint(200, 20), wxDefaultSize); 
 	
-	button->Bind(wxEVT_BUTTON, &MainFrame::OnButtonClicked, this);
-	slider->Bind(wxEVT_SLIDER, &MainFrame::OnSliderChanged, this);
-	textctrl->Bind(wxEVT_TEXT, &MainFrame::OnTextChanged, this);
+
+
+	this->Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
+	this->Bind(wxEVT_BUTTON, &MainFrame::AnyButtonClick, this);
+	button1->Bind(wxEVT_BUTTON, &MainFrame::Button1Click, this);
+	button2->Bind(wxEVT_BUTTON, &MainFrame::Button2Click, this);
+	
 
 
 	CreateStatusBar();
 
 
 }
-void MainFrame::OnSliderChanged(wxCommandEvent& evt)
+
+void MainFrame::OnClose(wxCloseEvent& evt)
 {
-	wxString str = wxString::Format("Slider value: %d", evt.GetInt());
-	wxLogStatus(str);
-}
-void MainFrame::OnTextChanged(wxCommandEvent& evt)
-{
-	wxString str = wxString::Format("Text changed: %s", evt.GetString());
-	wxLogStatus(str);
+	wxMessageBox(">:(", "mathafacka");
+	evt.Skip();
 }
 
-void MainFrame::OnButtonClicked(wxCommandEvent& evt)
+void MainFrame::Button1Click(wxCommandEvent& evt)
 {
 	wxMessageBox("YOU ARE A NIGGER!");
 	wxLogStatus("Surprise :3");
+	evt.Skip();
+}
+void MainFrame::Button2Click(wxCommandEvent& evt) 
+{
+	wxMessageBox("And yet ur a nigger");
+		wxLogStatus("not even a surprise, bruh");
+		evt.Skip();
+}
+void MainFrame::AnyButtonClick(wxCommandEvent& evt) 
+{
+	wxLogMessage("you pressed a button btw");
+	
 }
