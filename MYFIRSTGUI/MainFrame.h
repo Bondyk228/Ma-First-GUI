@@ -5,5 +5,10 @@ class MainFrame : public wxFrame
 {
 public: 
 	MainFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
+private:
+	void OnButtonClicked(wxCommandEvent& evt);
+	void OnSliderChanged(wxCommandEvent& evt);
+	void OnTextChanged(wxCommandEvent& evt);
+	
 };
 

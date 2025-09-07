@@ -131,11 +131,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Mainfile.cpp" />
     <ClCompile Include="MainFrame.cpp" />
+    <ClCompile Include="MyApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainFrame.h" />
+    <ClInclude Include="MyApp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
